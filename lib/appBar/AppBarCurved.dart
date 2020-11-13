@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:skeleton_app/utils/ScreenUtil.dart';
 import 'package:thebase_app/ui/screens/profile/components/AppBarProfile.dart';
 
+import 'AppBarProfile.dart';
+
 class AppBarCurved extends StatelessWidget implements PreferredSize {
 
   final String title;
