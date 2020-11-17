@@ -7,7 +7,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCurved('Hello this is your profile'),
+      appBar: AppBarCurved('Hello this is your profile page'),
       endDrawer: DrawerCurved(),
       body: BodyProfile(),
     );
