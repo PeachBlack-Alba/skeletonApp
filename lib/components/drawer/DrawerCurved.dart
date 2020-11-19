@@ -5,7 +5,7 @@ import 'package:thebase_app/ui/screens/profile/components/BottomSheetShape.dart'
 import 'package:thebase_app/ui/screens/profile/components/DrawerItem.dart';
 import 'package:thebase_app/ui/styles/Colors.dart';
 
-import 'BottomSheetShape.dart';
+import '../BottomSheetShape.dart';
 
 class DrawerCurved extends StatelessWidget {
   @override
