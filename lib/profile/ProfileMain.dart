@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:thebase_app/ui/components/appBarComponent/AppBarCurved.dart';
-import 'package:thebase_app/ui/components/drawer/DrawerCurved.dart';
-import 'package:thebase_app/ui/screens/profile/screens/BodyProfile.dart';
+import 'package:skeleton_app/appBar/AppBarCurved.dart';
+import 'package:skeleton_app/components/drawer/DrawerCurved.dart';
+import 'BodyProfile.dart';
 
 class Profile extends StatelessWidget {
   @override
