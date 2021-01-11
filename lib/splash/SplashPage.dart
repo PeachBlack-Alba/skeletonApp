@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:thebase_app/ui/animations/FadeIn.dart';
-import 'package:thebase_app/ui/styles/Colors.dart';
+import 'package:skeleton_app/animations/FadeIn.dart';
+import 'package:skeleton_app/styles/Colors.dart';
 
 class SplashPage extends StatefulWidget {
   @override
