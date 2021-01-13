@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeleton_app/animations/FadeIn.dart';
 import 'package:thebase_app/managers/blocs/AuthBloc.dart';
 import 'package:thebase_app/managers/blocs/AuthState.dart';
 import 'package:thebase_app/ui/animations/FadeIn.dart';
