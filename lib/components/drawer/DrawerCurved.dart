@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:skeleton_app/profile/components/DrawerItem.dart';
 import 'package:thebase_app/ui/routing/routes.dart';
 import 'package:thebase_app/ui/screens/profile/components/BottomSheetShape.dart';
 import 'package:thebase_app/ui/screens/profile/components/DrawerItem.dart';
