@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeleton_app/styles/Colors.dart';
 import 'package:thebase_app/config.dart';
 import 'package:thebase_app/generated/models/customers.dart';
 import 'package:thebase_app/managers/blocs/AuthBloc.dart';
