@@ -8,7 +8,6 @@ import 'package:thebase_app/managers/blocs/AuthBloc.dart';
 import 'package:thebase_app/managers/blocs/AuthState.dart';
 import 'package:thebase_app/ui/styles/Colors.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'dart:convert';
 import 'package:thebase_app/services/provide.dart';
 
