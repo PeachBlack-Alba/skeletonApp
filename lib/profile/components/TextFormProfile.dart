@@ -28,25 +28,11 @@ class _TextFormProfileState extends State<TextFormProfile> {
     return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
       return Center(
           child: Container(
-            width: 250,
-            child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-              Text('Name: ', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
-              TextFormField(
-                controller: nameController,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TheBaseColors.lightGreen),
-                  ),
-                ),
-                // InputField()
-              ),
-              /*SizedBox(
-            height: 10,
-          ),
-          Text('Email:', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
+        width: 250,
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+          Text('Name: ', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
           TextFormField(
-            controller: emailController,
+            controller: nameController,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               border: UnderlineInputBorder(
@@ -54,91 +40,91 @@ class _TextFormProfileState extends State<TextFormProfile> {
               ),
             ),
             // InputField()
-          ),*/
-              SizedBox(
-                height: 10,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text('Phone:', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
+          TextFormField(
+            controller: phoneController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(color: TheBaseColors.lightGreen),
               ),
-              Text('Phone:', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
-              TextFormField(
-                controller: phoneController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TheBaseColors.lightGreen),
-                  ),
+            ),
+            // InputField()
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text('Date of Birth:', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
+          TextField(
+            keyboardType: TextInputType.datetime,
+            decoration: InputDecoration(
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(color: TheBaseColors.lightGreen),
+              ),
+            ),
+            // InputField()
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Type of diet:',
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black),
+              ),
+              DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  items: <String>['vegetarian', 'vegan', 'pescatarian', 'omnivore'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      value = value;
+                    });
+                  },
                 ),
-                // InputField()
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text('Date of Birth:', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black)),
-              TextField(
-                keyboardType: TextInputType.datetime,
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TheBaseColors.lightGreen),
-                  ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTap: () async {
+              var userAccount = await context.api.customersApi.accounts.putProfile(
+                  defaultOrganisationId,
+                  context.blocs.auth.state.user.id,
+                  CustomerAccountProfile(nameController.value.text, context.blocs.auth.state.user.profile.avatar, phoneController.value.text,
+                      context.blocs.appConfig.phoneLocale.languageCode));
+
+              // update the current user
+              context.blocs.auth.updateUserAccount(userAccount.data);
+
+              Navigator.pushNamed(context, '/informationSaved');
+            },
+            child: Container(
+                height: 40.0,
+                width: 150.0,
+                margin: EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.black,
                 ),
-                // InputField()
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Type of diet:',
-                    style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black),
-                  ),
-                  DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
-                      items: <String>['vegetarian', 'vegan', 'pescatarian', 'omnivore'].map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          value = value;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: () async {
-                  var userAccount = await context.api.customersApi.accounts.putProfile(
-                      defaultOrganisationId,
-                      context.blocs.auth.state.user.id,
-                      CustomerAccountProfile(nameController.value.text, context.blocs.auth.state.user.profile.avatar, phoneController.value.text,
-                          context.blocs.appConfig.phoneLocale.languageCode));
-
-                  // update the current user
-                  context.blocs.auth.updateUserAccount(userAccount.data);
-
-                  Navigator.pushNamed(context, '/informationSaved');
-                },
-                child: Container(
-                    height: 40.0,
-                    width: 150.0,
-                    margin: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.black,
-                    ),
-                    child: Center(
-                      child: Text('Save', style: Theme.of(context).textTheme.headline6),
-                    )),
-              ),
-            ]),
-          ));
+                child: Center(
+                  child: Text('Save', style: Theme.of(context).textTheme.headline6),
+                )),
+          ),
+        ]),
+      ));
     });
   }
 }
